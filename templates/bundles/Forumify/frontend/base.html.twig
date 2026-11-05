@@ -1,0 +1,75 @@
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/citadelextendedfooterplugin/footer.css') }}">
+{% endblock %}
+
+{% block base %}
+    {{ parent() }}
+
+    {% set footer = {
+        name: setting('extended_footer.name') ?: setting('forumify.title'),
+        tagline: setting('extended_footer.tagline'),
+        info_email: setting('extended_footer.info_email'),
+        press_email: setting('extended_footer.press_email'),
+        address: setting('extended_footer.address'),
+        socials: setting('extended_footer.socials') ?? [],
+    } %}
+
+    <footer class="site-footer">
+        <div class="responsive grid-1 grid-md-2 grid-lg-4 gap-10">
+            <div>
+                <a class="footer-logo" href="{{ path('forumify_core_index') }}">
+                    {% block extended_footer_logo %}
+                        <img src="{{ setting('forumify.logo') ? asset(setting('forumify.logo'), 'forumify.asset') : logo }}" alt="{{ footer.name }}">
+                    {% endblock %}
+                </a>
+                {% if footer.tagline %}
+                    <p class="mt-4">{{ footer.tagline }}</p>
+                {% endif %}
+                {% if footer.socials is not empty %}
+                    <div class="socials flex flex-wrap gap-2 mt-6">
+                        {% for social in footer.socials|filter(s => s.url) %}
+                            <a class="btn-link btn-icon" href="{{ social.url }}" target="_blank" rel="noopener" aria-label="{{ social.name }}" title="{{ social.name }}">
+                                <i class="ph ph-{{ social.icon ?: 'link' }}" aria-hidden="true"></i>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <nav aria-label="Footer">
+                <h3>{{ 'extended_footer.explore'|trans }}</h3>
+                <div class="flex flex-col gap-2">
+                    <a href="{{ path('forumify_core_index') }}">{{ 'extended_footer.home'|trans }}</a>
+                    {{ forum_menu() }}
+                </div>
+            </nav>
+
+            {% if footer.info_email or footer.press_email %}
+                <div>
+                    <h3>{{ 'extended_footer.contact'|trans }}</h3>
+                    {% if footer.info_email %}
+                        <p class="label">{{ 'extended_footer.info_email'|trans }}</p>
+                        <a href="mailto:{{ footer.info_email }}">{{ footer.info_email }}</a>
+                    {% endif %}
+                    {% if footer.press_email %}
+                        <p class="label{{ footer.info_email ? ' mt-4' }}">{{ 'extended_footer.press_email'|trans }}</p>
+                        <a href="mailto:{{ footer.press_email }}">{{ footer.press_email }}</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if footer.address %}
+                <div>
+                    <h3>{{ 'extended_footer.studio'|trans }}</h3>
+                    <address>{{ footer.address|nl2br }}</address>
+                </div>
+            {% endif %}
+        </div>
+    </footer>
+{% endblock %}
+
+{% block footer_links %}
+    <span class="copyright">&copy; {{ 'now'|date('Y') }} {{ setting('extended_footer.name') ?: setting('forumify.title') }}. {{ 'extended_footer.rights'|trans }}</span>
+    {{ parent() }}
+{% endblock %}

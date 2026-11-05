@@ -1,0 +1,5 @@
+admin:
+  resource: ../src/Admin/Controller
+  type: attribute
+  name_prefix: extended_footer_admin_
+  prefix: admin/extended-footer/

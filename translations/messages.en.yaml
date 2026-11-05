@@ -1,0 +1,28 @@
+extended_footer:
+    explore: Explore
+    home: Home
+    contact: Contact
+    info_email: General inquiries
+    press_email: Press inquiries
+    studio: Studio
+    rights: All rights reserved.
+    config:
+        title: Extended Footer
+        general: General
+        contact: Contact
+        name: Studio name
+        name_help: Used in the copyright line. Leave empty to use the forum title.
+        tagline: Tagline
+        info_email: General inquiries email
+        press_email: Press inquiries email
+        address: Address
+        address_help: One line per row of the address.
+        socials: Social links
+        socials_help: Icons are Phosphor icon names, for example discord-logo or youtube-logo. Links without a URL are not shown.
+        social_name: Network
+        social_icon: Icon
+        social_url: URL
+        new_social: New link
+        add_social: Add link
+        remove_social: Remove
+        saved: Footer saved.

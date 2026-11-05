@@ -1,0 +1,6 @@
+{% extends '@Forumify/admin/base.html.twig' %}
+{% block title_page %}{{ 'extended_footer.config.title'|trans }}{% endblock %}
+{% block body %}
+    <h1>{{ 'extended_footer.config.title'|trans }}</h1>
+    {{ component('ExtendedFooter\\ConfigurationForm') }}
+{% endblock %}

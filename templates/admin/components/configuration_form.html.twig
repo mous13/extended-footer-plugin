@@ -1,0 +1,46 @@
+<div {{ attributes }} class="box">
+    {{ form_start(form, {
+        attr: {
+            'data-action': 'live#action:prevent',
+            'data-live-action-param': 'save',
+        }
+    }) }}
+    {% embed '@Forumify/components/tabs.html.twig' %}
+        {% block tabs %}
+            <button type="button" class="btn-link" data-tab-id="general">{{ 'extended_footer.config.general'|trans }}</button>
+            <button type="button" class="btn-link" data-tab-id="contact">{{ 'extended_footer.config.contact'|trans }}</button>
+            <button type="button" class="btn-link" data-tab-id="socials">{{ 'extended_footer.config.socials'|trans }}</button>
+        {% endblock %}
+        {% block tabpanels %}
+            <div id="general">
+                {{ form_row(form.name) }}
+                {{ form_row(form.tagline) }}
+            </div>
+            <div id="contact">
+                {{ form_row(form.info_email) }}
+                {{ form_row(form.press_email) }}
+                {{ form_row(form.address) }}
+            </div>
+            <div id="socials">
+                {{ form_help(form.socials) }}
+                {% for social in form.socials %}
+                    <div class="flex items-center justify-between mt-6 mb-2">
+                        <h3>{{ social.name.vars.value ?: 'extended_footer.config.new_social'|trans }}</h3>
+                        {{ form_widget(social.vars.button_delete) }}
+                    </div>
+                    {{ form_row(social.name) }}
+                    {{ form_row(social.icon) }}
+                    {{ form_row(social.url) }}
+                {% endfor %}
+                <div class="mt-6">
+                    {{ form_widget(form.socials.vars.button_add) }}
+                </div>
+                {% do form.socials.setRendered %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+    <div class="text-center mt-6">
+        <button type="submit" class="btn-primary">{{ 'save'|trans }}</button>
+    </div>
+    {{ form_end(form) }}
+</div>

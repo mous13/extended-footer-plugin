@@ -1,0 +1,118 @@
+.site-footer {
+    padding-top: var(--spacing-12);
+    margin: var(--spacing-12) 0 0;
+    background-color: #060606;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.site-footer > .responsive {
+    max-width: 1280px;
+    padding-bottom: var(--spacing-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-footer h3 {
+    margin-bottom: var(--spacing-4);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.site-footer a {
+    color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.site-footer a:hover {
+    color: #ff2a2a;
+    text-decoration: none;
+}
+
+.site-footer a:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.site-footer nav a,
+.site-footer nav .btn-link {
+    height: auto;
+    padding: 0;
+    background: none;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.site-footer nav a:hover,
+.site-footer nav .btn-link:hover {
+    background: none;
+    color: #ffffff;
+}
+
+.footer-logo {
+    display: inline-block;
+}
+
+.footer-logo img,
+.footer-logo svg {
+    display: block;
+    height: 48px;
+    width: auto;
+}
+
+.site-footer .label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.site-footer address {
+    font-style: normal;
+}
+
+.socials .btn-icon {
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.socials .btn-icon i {
+    margin: 0;
+    font-size: 18px;
+}
+
+.socials .btn-icon:hover {
+    border-color: #d10000;
+    background-color: #d10000;
+    color: #ffffff;
+}
+
+.site-footer + footer {
+    justify-content: flex-start;
+    margin: 0;
+    padding: var(--spacing-6) max((100% - 1280px) / 2, 100% / 24);
+    background-color: #060606;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.site-footer + footer p:first-child {
+    display: contents;
+}
+
+.copyright {
+    margin-right: auto;
+}
+
+.site-footer + footer a {
+    color: rgba(255, 255, 255, 0.7);
+}
